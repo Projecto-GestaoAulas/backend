@@ -18,7 +18,8 @@ import pt.upacademy.coreFinalProject.models.core.EntityRoot;
 @NamedQueries({ @NamedQuery(name = Edition.GET_ALL_EDITIONS, query = "SELECT e FROM Edition e"),
 		@NamedQuery(name = Edition.GET_ALL_EDITIONS_IDS, query = "SELECT e.id FROM Edition e"),
 		@NamedQuery(name = Edition.GET_ALL_EDITIONS_COUNT, query = "SELECT COUNT(e.id) FROM Edition e"),
-		@NamedQuery(name = Edition.GET_EDITION_ACCOUNT_ID, query = "SELECT e FROM Edition e inner join e.accounts accounts WHERE accounts.id in :accountId")})
+		@NamedQuery(name = Edition.GET_EDITION_ACCOUNT_ID, query = "SELECT e FROM Edition e inner join e.accounts accounts WHERE accounts.id in :accountId"),
+		@NamedQuery(name = Edition.GET_EDITION_IDS_BY_ACCOUNT_ID, query = "SELECT e.id FROM Edition e inner join e.accounts accounts WHERE accounts.id in :accountId")})
 
 
 public class Edition extends EntityRoot {
@@ -27,6 +28,7 @@ public class Edition extends EntityRoot {
 	public static final String GET_ALL_EDITIONS_IDS = "getAllEditionsIds";
 	public static final String GET_ALL_EDITIONS_COUNT = "getAllEditionsCount";
 	public static final String GET_EDITION_ACCOUNT_ID = "getEditionsByAccountId";
+	public static final String GET_EDITION_IDS_BY_ACCOUNT_ID = "getEditionsIdsByAccountId";
 
 	private static final long serialVersionUID = 1L;
 

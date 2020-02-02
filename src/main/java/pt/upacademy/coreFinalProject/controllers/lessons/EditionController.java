@@ -32,6 +32,13 @@ public class EditionController extends EntityControllerDTO <EditionService, Edit
 		Collection<EditionDTO> ent = service.getbyAccountId(id);
 		return ent;
 	}
+	
+	@GET
+	@Path("accounts/ids/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Long> getEditionIdsByAccountID(@PathParam("id") long id) {
+		return service.getEditionIdsByAccountID(id);
+	}
 }
 
 	

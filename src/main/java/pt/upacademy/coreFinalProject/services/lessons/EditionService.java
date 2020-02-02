@@ -25,4 +25,9 @@ public class EditionService extends  EntityService <EditionRepository, Edition>{
 		return repository.getbyAccountId(id).stream().map(ed -> converter.toDTO(ed)).collect(Collectors.toList());
 	}
 
+
+	public Collection<Long> getEditionIdsByAccountID(long id) {
+		return repository.getEditionIdsByAccountID(id);
+	}
+
 }

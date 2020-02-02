@@ -40,4 +40,8 @@ public class NoteRepository extends EntityRepository<Note>{
 	public List <Note> getNotesByAccountId(long id) {
 		return entityManager.createNamedQuery(Note.GET_NOTES_BY_ACCOUNT_ID, Note.class).setParameter("accountId", id).getResultList();
 	}
+
+	public Note createNote(Note note) {
+		return entityManager.merge(note);
+	}
 }

@@ -19,4 +19,8 @@ public class NoteService extends EntityService<NoteRepository, Note> {
 		return repository.getNotesByAccountId(id);
 	}
 
+	public Note createNote(Note note) {
+		return repository.createNote(note);
+	}
+
 }

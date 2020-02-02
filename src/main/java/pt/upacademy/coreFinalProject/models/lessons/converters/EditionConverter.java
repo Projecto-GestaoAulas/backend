@@ -20,8 +20,6 @@ public class EditionConverter extends EntityConverter<Edition, EditionDTO> {
 	@Inject
 	private LessonService LS;
 	
-	@Inject
-	private LessonConverter LC;
 	
 	@Override
 	public Edition toEntity(EditionDTO dto) {
@@ -42,7 +40,7 @@ public class EditionConverter extends EntityConverter<Edition, EditionDTO> {
 		editionDTO.setName(ent.getName());
 		editionDTO.setType(ent.getType());
 		editionDTO.setAccountsIds(ent.getAccounts().stream().map(acc -> acc.getId()).collect(Collectors.toList()));
-		editionDTO.setLessonsDtos(LS.getLessonsByEditionId(ent.getId()).stream().map(lesson -> LC.toDTO(lesson)).collect(Collectors.toList()));
+		editionDTO.setLessonsDtos(LS.getLessonsByEditionId(ent.getId()).stream().collect(Collectors.toList()));
 		return editionDTO;
 
 	}

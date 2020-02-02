@@ -5,8 +5,11 @@ import java.util.Collections;
 
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import pt.upacademy.coreFinalProject.controllers.core.EntityControllerDTO;
@@ -20,7 +23,10 @@ import pt.upacademy.coreFinalProject.services.lessons.LessonService;
 @RequestScoped
 public class LessonController extends EntityControllerDTO <LessonService, LessonRepository,LessonConverter, Lesson, LessonDTO> {
 
-	public Collection<Lesson> getLessonsByEditionId(long id) {
+	@GET
+	@Path("/edition/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<LessonDTO> getLessonsByEditionId(@PathParam("id") long id) {
 		return service.getLessonsByEditionId(id);
 	}
 	

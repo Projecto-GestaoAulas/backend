@@ -10,17 +10,14 @@ import pt.upacademy.coreFinalProject.models.lessons.AccountLessons;
 import pt.upacademy.coreFinalProject.models.lessons.DTOS.AccountDTO;
 import pt.upacademy.coreFinalProject.services.lessons.EditionService;
 
-
 @RequestScoped
 public class AccountConverter extends EntityConverter<AccountLessons, AccountDTO> {
 
 	@Inject
 	private EditionService editionBus;
 
-
-	@Inject 
+	@Inject
 	protected EditionConverter converter;
-
 
 	@Override
 	public AccountLessons toEntity(AccountDTO dto) {
@@ -38,14 +35,14 @@ public class AccountConverter extends EntityConverter<AccountLessons, AccountDTO
 	}
 
 // ------------------------------------------><----------------------------------------------------------	
-	
+
 	@Override
 	public AccountDTO toDTO(AccountLessons ent) {
 		AccountDTO accountDTO = new AccountDTO(
 				ent.getId(),
 				ent.getUserId(), 
-				editionBus.get().stream().map(edition -> converter.toDTO(edition)).collect(Collectors.toList())
-				);
+//				editionBus.getbyAccountId(ent.getId()).stream().map(edition -> converter.toDTO(edition)).collect(Collectors.toList()));
+				editionBus.getbyAccountId(ent.getId()).stream().collect(Collectors.toList()));
 
 		return accountDTO;
 		
