@@ -14,8 +14,9 @@ import pt.upacademy.coreFinalProject.models.core.EntityRoot;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = Materials.GET_ALL_MATERIALS, query = "SELECT m FROM Materials m"),
-	@NamedQuery(name = Materials.GET_ALL_MATERIALS_IDS, query = "SELECT m.id FROM Materials m")})
-//	@NamedQuery(name = Materials.GET_MATERIALS_BY_LESSON_ID, query = "SELECT m FROM Materials m inner join m.lessons lessons WHERE lessons.id in :lessonId") 
+	@NamedQuery(name = Materials.GET_ALL_MATERIALS_IDS, query = "SELECT m.id FROM Materials m"),
+	@NamedQuery(name = Materials.GET_MATERIALS_BY_LESSON_ID, query = "SELECT m FROM Materials m inner join m.lessons lessons WHERE lessons.id in :lessonId")
+})
 
 public class Materials extends EntityRoot {
 

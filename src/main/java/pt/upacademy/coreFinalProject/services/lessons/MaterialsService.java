@@ -7,6 +7,8 @@ import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.lessons.Lesson;
 import pt.upacademy.coreFinalProject.models.lessons.Materials;
+import pt.upacademy.coreFinalProject.models.lessons.DTOS.MaterialsDTO;
+import pt.upacademy.coreFinalProject.models.lessons.converters.MaterialsConverter;
 import pt.upacademy.coreFinalProject.repositories.lessons.MaterialsRepository;
 import pt.upacademy.coreFinalProject.services.core.EntityService;
 
@@ -17,6 +19,9 @@ public class MaterialsService extends EntityService <MaterialsRepository, Materi
 	
 	@Inject
 	protected LessonService LS;
+	
+	@Inject
+	protected MaterialsConverter MC;
 	
 
 	public void delete(long id) {
@@ -34,6 +39,11 @@ public class MaterialsService extends EntityService <MaterialsRepository, Materi
 			LS.update(lesson);
 		}
 		repository.deleteEntity(id);
+	}
+
+
+	public Collection<MaterialsDTO> getMaterialsByLessonID(long id) {
+		return repository.getMaterialsByLessonID(id).stream().map(mat -> MC.toDTO(mat)).collect(Collectors.toList());
 	}
 	
 //	public Collection<Long> getMaterialsByLessonId(long id) {
