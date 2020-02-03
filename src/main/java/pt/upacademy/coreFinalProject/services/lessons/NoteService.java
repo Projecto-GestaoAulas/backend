@@ -23,4 +23,8 @@ public class NoteService extends EntityService<NoteRepository, Note> {
 		return repository.createNote(note);
 	}
 
+	public Note updateNote(Note note) {
+		return repository.updateNote(note);
+	}
+
 }

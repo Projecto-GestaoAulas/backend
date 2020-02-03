@@ -44,4 +44,8 @@ public class NoteRepository extends EntityRepository<Note>{
 	public Note createNote(Note note) {
 		return entityManager.merge(note);
 	}
+
+	public Note updateNote(Note note) {
+		return entityManager.merge(note);
+	}
 }

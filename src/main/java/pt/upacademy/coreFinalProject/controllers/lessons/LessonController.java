@@ -44,5 +44,4 @@ public class LessonController extends EntityControllerDTO <LessonService, Lesson
 		service.delete(id);
 		return Response.ok().build();
 	}
-	
 }
